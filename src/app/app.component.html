@@ -1,39 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">{{ title }}</a>
-  <button class="navbar-toggler hidden-sm-up"
-          type="button"
-          (click)="isNavbarCollapsed = !isNavbarCollapsed"
-          data-toggle="collapse"
-          data-target="#navbarsExampleDefault"
-          aria-controls="navbarsExampleDefault"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isNavbarCollapsed">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-true}">
-        <a class="nav-link" routerLink="/">Home</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['about']">About</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/books">Books</a>
-      </li>
-    </ul>
-
-  </div>
-</nav>
-
+<app-navbar [title]="title" [links]="links"></app-navbar>
 <main role="main" class="container">
   <router-outlet></router-outlet>
 </main><!-- /.container -->
-
-
-
-
-
-
