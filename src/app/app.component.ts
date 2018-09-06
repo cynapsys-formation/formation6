@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConfigService} from './core/services/config.service';
 import {Observable, Subscription} from 'rxjs';
 import {filter, map, mergeAll} from 'rxjs/operators';
-import {Link} from './models/link';
+import {Link} from './shared/models/link';
 
 // import * as $ from 'jquery';
 

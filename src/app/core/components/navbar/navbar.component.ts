@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Link} from '../../../models/link';
+import {Link} from '../../../shared/models/link';
 
 @Component({
   selector: 'app-navbar',
