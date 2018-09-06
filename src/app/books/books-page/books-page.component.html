@@ -2,11 +2,19 @@
   books-page works!
 </p>
 
+<app-book-form (submitedBook)="onSubmitForm($event)"></app-book-form>
 
-<table class="table table-bordered">
-  <tr *ngFor="let book of books">
-    <td>{{ book.id }}</td>
-    <td>{{ book.title }}</td>
-    <td>{{ book.author }}</td>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Title</th>
   </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books">
+    <td><a [routerLink]="['details', book.id]"> {{ book.id }}</a></td>
+    <td (click)="gotToBookDetails(book.id)">{{ book.title }}</td>
+  </tr>
+  </tbody>
 </table>

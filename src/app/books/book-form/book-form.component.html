@@ -1,0 +1,11 @@
+<p>
+  book-form works!
+</p>
+
+<form [formGroup]="bookForm" (submit)="onSubmit()">
+  <input name="title" formControlName="title">
+  <input name="author" formControlName="author">
+  <button type="submit" [disabled]="!bookForm.valid">Save</button>
+</form>
+
+<br/>
