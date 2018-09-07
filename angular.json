@@ -132,6 +132,46 @@
           }
         }
       }
+    },
+    "exponential": {
+      "root": "projects/exponential",
+      "sourceRoot": "projects/exponential/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/exponential/tsconfig.lib.json",
+            "project": "projects/exponential/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/exponential/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/exponential/src/test.ts",
+            "tsConfig": "projects/exponential/tsconfig.spec.json",
+            "karmaConfig": "projects/exponential/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/exponential/tsconfig.lib.json",
+              "projects/exponential/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "formation6"

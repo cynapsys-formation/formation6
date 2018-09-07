@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {PipesModule} from '../pipes/pipes.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {DirectivesModule} from '../directives/directives.module';
+import {ExponentialModule} from '../../../../projects/exponential/src/lib/exponential.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import {DirectivesModule} from '../directives/directives.module';
     FormsModule,
     ReactiveFormsModule,
     PipesModule,
+    ExponentialModule,
     DirectivesModule,
     TranslateModule
   ]

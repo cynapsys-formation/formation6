@@ -16,24 +16,18 @@ export class AppComponent implements OnInit, OnDestroy {
   title: string;
   links: Array<Link> = [];
   configs$: Observable<any>;
-
   hello: string;
-
-  subscriptions$: Array<Subscription> = [];
+  private subscriptions$: Array<Subscription> = [];
 
 
   constructor(private configService: ConfigService,
               private translate: TranslateService) {
-
     translate.setDefaultLang('en');
     translate.use('fr');
-
   }
 
   ngOnInit(): void {
-
     this.translate.get('HELLO').subscribe(data => this.hello = data);
-
     this.getConfig();
   }
 
