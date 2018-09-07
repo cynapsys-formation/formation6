@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {Book} from '../../shared/models/book';
+import {Book} from '../../shared/models';
 import {BooksService} from '../books.service';
 import {Observable, pipe} from 'rxjs';
 import {map, mergeAll} from 'rxjs/operators';
