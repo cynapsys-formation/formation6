@@ -2,6 +2,11 @@
   book-form works!
 </p>
 
+<div>
+  <app-notification [message]="message"></app-notification>
+</div>
+
+
 <form [formGroup]="bookForm" (submit)="onSubmit()">
   <input name="title" formControlName="title">
   <input name="author" formControlName="author">
@@ -9,3 +14,4 @@
 </form>
 
 <br/>
+

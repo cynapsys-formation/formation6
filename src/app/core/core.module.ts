@@ -5,6 +5,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import {ConfigService} from './services/config.service';
 import {HttpClientModule} from '@angular/common/http';
+import {NotificationModule} from '../shared/components/notification/notification.module';
+import {NotificationService} from '../shared/services/notification.service';
 
 @NgModule({
   imports: [
@@ -13,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
     RouterModule,
 
     NgbModule.forRoot(),
+    NotificationModule
   ],
   declarations: [
     NavbarComponent
@@ -22,6 +25,7 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   providers: [
    // ConfigService
+    NotificationService
   ]
 })
 export class CoreModule { }

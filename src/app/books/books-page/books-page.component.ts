@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Book} from '../../shared/models/book';
 import {BooksService} from '../books.service';
-import {pipe} from 'rxjs';
+import {Observable, pipe} from 'rxjs';
 import {map, mergeAll} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {NotificationService} from '../../shared/services/notification.service';
+
 
 @Component({
   selector: 'app-books-page',
@@ -14,13 +16,24 @@ import {Router} from '@angular/router';
 export class BooksPageComponent implements OnInit, OnDestroy {
   book: Book;
   books: Array<Book> = [];
+  message: string;
+
+  books$: Observable<Array<Book>>;
 
   constructor(private booksService: BooksService,
-              private router: Router) { }
+              private notificationService: NotificationService,
+              private router: Router) {
+
+    notificationService.getMessage.subscribe(data => {
+      this.message = data;
+    });
+
+  }
 
   ngOnInit() {
       this.initData();
     this.book = {
+      id: 3,
       title: 'title',
       author: 'author'
     };
@@ -35,13 +48,16 @@ export class BooksPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmitForm(event) {
-    this.booksService.saveBook(event).subscribe((data) => {
+    this.booksService.saveBook(event).subscribe(() => {
       this.initData();
+      this.notificationService.setMessage = 'new book is saved';
     });
   }
 
   private initData() {
     this.books = [];
+
+    /*
     this.booksService.getBooks()
       .pipe(
         mergeAll(),
@@ -50,5 +66,14 @@ export class BooksPageComponent implements OnInit, OnDestroy {
        })
       )
       .subscribe();
+      */
+      this.books$ =  this.booksService.getBooks$;
+
+    //  this.booksService.setBooks$ = [this.book];
+
+     this.booksService.getBooks$.subscribe((data: any) => {
+       console.log('getBooks$', data);
+       this.books = data;
+     });
   }
 }

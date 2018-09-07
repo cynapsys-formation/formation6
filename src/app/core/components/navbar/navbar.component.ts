@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Link} from '../../../shared/models/link';
+import {NotificationService} from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +12,17 @@ export class NavbarComponent implements OnInit {
   @Input() links: Array<Link> = [];
   isNavbarCollapsed; boolean;
 
-  constructor() { }
+  message: string;
+
+  constructor(private notificationService: NotificationService) {
+
+  }
 
   ngOnInit() {
-
+    this.notificationService.getMessage.subscribe(data => {
+      console.log('gggg', data);
+      this.message = data;
+    });
   }
 
 }

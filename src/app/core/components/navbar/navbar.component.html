@@ -16,6 +16,9 @@
       <li class="nav-item" *ngFor="let item of links" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="[item.path]">{{item.title}}</a>
       </li>
+      <li>
+        <app-notification [message]="message" [isSimple]="true"></app-notification>
+      </li>
     </ul>
   </div>
 </nav>

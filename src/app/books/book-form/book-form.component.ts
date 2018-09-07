@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
+import {NotificationService} from '../../shared/services/notification.service';
 
 @Component({
   selector: 'app-book-form',
@@ -12,14 +13,20 @@ export class BookFormComponent implements OnInit {
  // title: FormControl;
   // author: FormControl;
   bookForm: FormGroup;
+  message: string;
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.bookForm = this.fb.group({
       title: ['', Validators.required],
       author: ['']
+    });
+
+    this.notificationService.getMessage.subscribe(data => {
+      this.message = data;
     });
   }
 

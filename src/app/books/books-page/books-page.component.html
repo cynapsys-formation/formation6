@@ -2,6 +2,8 @@
   books-page works!
 </p>
 
+<app-notification [message]="message"></app-notification>
+
 <app-book-form (submitedBook)="onSubmitForm($event)"></app-book-form>
 
 <table class="table table-bordered table-striped">
@@ -18,3 +20,5 @@
   </tr>
   </tbody>
 </table>
+
+<pre>{{ books$ | async | json }}</pre>

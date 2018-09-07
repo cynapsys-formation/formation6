@@ -2,13 +2,15 @@ import {enableProdMode, Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Book} from '../shared/models/book';
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {map, mergeAll} from 'rxjs/operators';
 
 @Injectable()
 export class BooksService {
 
   apiUrl = environment.apiUrl;
+  private books$: ReplaySubject<any> = new ReplaySubject();
+
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +34,18 @@ export class BooksService {
 
   deleteBook(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+
+  get getBooks$() {
+    this.getBooks().subscribe((data: any) => {
+      this.books$.next(data);
+    });
+    return this.books$.asObservable();
+  }
+
+  set setBooks$(books: any) {
+    this.books$.next(books);
   }
 
 }
