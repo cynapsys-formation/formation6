@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isNavbarCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngFor="let item of links" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <a class="nav-link" [routerLink]="[item.path]">{{item.title}}</a>
+        <a class="nav-link" [routerLink]="[item.path]">{{item.title }}</a>
       </li>
       <li>
         <app-notification [message]="message" [isSimple]="true"></app-notification>

@@ -3,6 +3,7 @@ import {ConfigService} from './core/services/config.service';
 import {Observable, Subscription} from 'rxjs';
 import {filter, map, mergeAll} from 'rxjs/operators';
 import {Link} from './shared/models/link';
+import {TranslateService} from '@ngx-translate/core';
 
 // import * as $ from 'jquery';
 
@@ -16,12 +17,23 @@ export class AppComponent implements OnInit, OnDestroy {
   links: Array<Link> = [];
   configs$: Observable<any>;
 
+  hello: string;
+
   subscriptions$: Array<Subscription> = [];
 
 
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService,
+              private translate: TranslateService) {
+
+    translate.setDefaultLang('en');
+    translate.use('fr');
+
+  }
 
   ngOnInit(): void {
+
+    this.translate.get('HELLO').subscribe(data => this.hello = data);
+
     this.getConfig();
   }
 

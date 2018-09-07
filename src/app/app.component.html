@@ -1,4 +1,7 @@
 <app-navbar [title]="title" [links]="links"></app-navbar>
 <main role="main" class="container">
+  <div>{{ 'HELLO' | translate }}</div>
+
+  <div>{{ hello }}</div>
   <router-outlet></router-outlet>
 </main><!-- /.container -->
