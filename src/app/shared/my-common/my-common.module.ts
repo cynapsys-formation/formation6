@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {PipesModule} from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
   exports: [
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ]
 })
 export class MyCommonModule { }

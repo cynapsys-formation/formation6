@@ -17,6 +17,7 @@ export class BooksPageComponent implements OnInit, OnDestroy {
   book: Book;
   books: Array<Book> = [];
   message: string;
+  today = new Date();
 
   books$: Observable<Array<Book>>;
 
@@ -37,6 +38,10 @@ export class BooksPageComponent implements OnInit, OnDestroy {
       title: 'title',
       author: 'author'
     };
+  }
+
+  getFullname(book): string {
+    return book.title + ' - ' + book.author;
   }
 
   ngOnDestroy() {
