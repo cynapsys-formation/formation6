@@ -3,7 +3,7 @@ import {Book} from '../../shared/models';
 import {BooksService} from '../books.service';
 import {Observable, pipe} from 'rxjs';
 import {map, mergeAll} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {NotificationService} from '../../shared/services/notification.service';
 
 
@@ -18,6 +18,7 @@ export class BooksPageComponent implements OnInit, OnDestroy {
   books: Array<Book> = [];
   message: string;
   today = new Date();
+  data: any;
 
   books$: Observable<Array<Book>>;
 
@@ -32,6 +33,12 @@ export class BooksPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+  //  this.data = this.activatedRoute.snapshot.data;
+
+
+
+
       this.initData();
     this.book = {
       id: 3,
